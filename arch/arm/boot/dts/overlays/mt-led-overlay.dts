@@ -1,0 +1,67 @@
+/*
+ * Copyright (C) 2019 - All Rights Reserved by 
+ * filename : imx-fire-led-overlay.dts
+ * brief : Device Tree overlay for EBF6ull led device
+ * author : embedfire
+ * date : 2019-11-15 
+ * version : A001
+ */
+ /dts-v1/;
+ /plugin/;
+#include "../imx6ul-pinfunc.h"
+#include "dt-bindings/gpio/gpio.h"
+ / {
+        fragment@0 {
+            target-path = "/";
+            __overlay__ {
+                normal_led{
+                    compatible = "gpio-leds";
+                    led_gps {
+                        pinctrl-names = "default";
+                        pinctrl-0 = <&pinctrl_gps>;
+                        label = "led_gps";
+                        gpios = <&gpio5 4 GPIO_ACTIVE_LOW>;
+                        default-state = "off";
+                        linux,default-trigger = "none";                       
+                    };
+
+                    led_4g {
+                        pinctrl-names = "default";
+                        pinctrl-0 = <&pinctrl_4g>;    
+                        label = "led_4g";
+                        gpios = <&gpio5 2 GPIO_ACTIVE_LOW>;
+                        default-state = "off";
+                        linux,default-trigger = "none";                          
+                    };
+
+                    led_lan {
+                        pinctrl-names = "default";
+                        pinctrl-0 = <&pinctrl_lan>;    
+                        label = "led_lan";
+                        gpios = <&gpio1 4 GPIO_ACTIVE_LOW>;
+                        default-state = "off";
+                        linux,default-trigger = "none";                           
+                    };
+
+
+                };
+            };
+        };
+
+        fragment@1 {
+            target= <&iomuxc>;
+            __overlay__{
+                pinctrl_gps:gpsgrp{
+                    fsl,pins = < MX6UL_PAD_SNVS_TAMPER4__GPIO5_IO04 0x1b0b0 >;
+                };
+                pinctrl_4g:4ggrp{
+                    fsl,pins = < MX6UL_PAD_SNVS_TAMPER2__GPIO5_IO02 0x1b0b0 >;
+                };
+
+                pinctrl_lan:langrp{
+                    fsl,pins = < MX6UL_PAD_GPIO1_IO04__GPIO1_IO04 0x1b0b0 >;
+                };
+            };
+        };
+
+ };

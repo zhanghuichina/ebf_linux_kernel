@@ -1,0 +1,43 @@
+/*
+ * Copyright (C) 2019 - All Rights Reserved by
+ * filename : imx-fire-485r2-overlay.dts
+ * brief : Device Tree overlay for EBF6ull rs485 device
+ * author : embedfire
+ * date : 2019-12-17
+ * version : A001
+ */
+
+/dts-v1/;
+/plugin/;
+#include "../imx6ul-pinfunc.h"
+#include "dt-bindings/gpio/gpio.h"
+
+
+
+/ {
+         fragment@0 {
+                target=<&uart7>;
+                __overlay__ {
+                                        pinctrl-names = "default";
+                                        pinctrl-0 = <&pinctrl_485r1>;
+                                        uart-has-rtscts;
+                                        rts-gpios = <&gpio3 23 GPIO_ACTIVE_HIGH>;
+                                        linux,rs485-enabled-at-boot-time;
+                                        status = "okay";
+                };
+         };
+        fragment@1 {
+                target=<&iomuxc>;
+                __overlay__ {
+                                        pinctrl_485r1: 485r1grp {
+                                                fsl,pins = <
+                                                        MX6UL_PAD_LCD_DATA16__UART7_DCE_TX     0x1b0b1
+                                                        MX6UL_PAD_LCD_DATA17__UART7_DCE_RX     0x1b0b1
+                                                        MX6UL_PAD_LCD_DATA18__GPIO3_IO23       0x1b0b1 /* RS485 RE/DE */
+                                                >;
+                                        };
+
+                };
+        };
+};
+

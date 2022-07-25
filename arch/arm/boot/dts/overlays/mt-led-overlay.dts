@@ -43,7 +43,23 @@
                         linux,default-trigger = "none";                           
                     };
 
+                    esp_rst {
+                        pinctrl-names = "default";
+                        pinctrl-0 = <&pinctrl_esp_rst>;    
+                        label = "esp_rst";
+                        gpios = <&gpio5 8 GPIO_ACTIVE_HIGH>;
+                        default-state = "off";
+                        linux,default-trigger = "none";                           
+                    };
 
+                    esp_dwn {
+                        pinctrl-names = "default";
+                        pinctrl-0 = <&pinctrl_esp_dwn>;    
+                        label = "esp_dwn";
+                        gpios = <&gpio5 7 GPIO_ACTIVE_HIGH>;
+                        default-state = "off";
+                        linux,default-trigger = "none";                           
+                    };
                 };
             };
         };
@@ -61,7 +77,14 @@
                 pinctrl_lan:langrp{
                     fsl,pins = < MX6UL_PAD_GPIO1_IO04__GPIO1_IO04 0x1b0b0 >;
                 };
-            };
-        };
 
+                pinctrl_esp_rst:esprstgrp{
+                    fsl,pins = < MX6UL_PAD_SNVS_TAMPER8__GPIO5_IO08 0x1b0b0 >;
+                };
+
+                pinctrl_esp_dwn:espdwngrp{
+                    fsl,pins = < MX6UL_PAD_SNVS_TAMPER7__GPIO5_IO07 0x1b0b0 >;
+                };
+            };
+	};
  };

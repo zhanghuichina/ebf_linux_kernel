@@ -10,6 +10,7 @@
 /dts-v1/;
 /plugin/;
 #include "../imx6ul-pinfunc.h"
+#include "../imx6ull-pinfunc.h"
 #include "dt-bindings/gpio/gpio.h"
 
  / {
@@ -17,17 +18,19 @@
 		target=<&uart8>;
 		__overlay__ {
 			pinctrl-names = "default";
-			pinctrl-0 = <&pinctrl_uart8>;
+			pinctrl-0 = <&pinctrl_485r2>;
+			linux,rs485-enabled-at-boot-time;
 			status = "okay";            
 		};
 	 };
 	fragment@1 {
 		target=<&iomuxc>;
 		__overlay__ {
-			pinctrl_uart8:uart8grp {
+			pinctrl_485r2: 485r2grp {
 				fsl,pins = <
 					MX6UL_PAD_LCD_DATA20__UART8_DCE_TX	0x1b0b1
-					MX6UL_PAD_LCD_DATA21__UART8_DCE_RX	0x1b0b1                
+					MX6UL_PAD_LCD_DATA21__UART8_DCE_RX	0x1b0b1
+					MX6UL_PAD_LCD_DATA22__GPIO3_IO27	0x1b0b1              
 				>;
 			};  
 		};

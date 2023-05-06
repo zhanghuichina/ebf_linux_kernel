@@ -52,6 +52,9 @@ dtbo-$(CONFIG_SOC_IMX6ULL) += \
 	mt-uart6.dtbo		\
 	mt-485r1.dtbo		\
 	mt-485r2.dtbo		\
+	mt-sound.dtbo           \
+	mt-btwifi.dtbo		\
+	mt-can1.dtbo		\
 
 
 targets += dtbs dtbs_install

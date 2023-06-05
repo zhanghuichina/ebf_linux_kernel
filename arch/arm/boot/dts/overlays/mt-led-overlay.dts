@@ -18,7 +18,7 @@
                     compatible = "gpio-leds";
                     led_wifi {
                         pinctrl-names = "default";
-                        pinctrl-0 = <&pinctrl_wifi>;
+                        pinctrl-0 = <&pinctrl_led_wifi>;
                         label = "led_wifi";
                         gpios = <&gpio5 2 GPIO_ACTIVE_LOW>;
                         default-state = "off";
@@ -27,7 +27,7 @@
 
                     led_bat {
                         pinctrl-names = "default";
-                        pinctrl-0 = <&pinctrl_bat>;    
+                        pinctrl-0 = <&pinctrl_led_bat>;    
                         label = "led_bat";
                         gpios = <&gpio5 1 GPIO_ACTIVE_LOW>;
                         default-state = "off";
@@ -36,7 +36,7 @@
 
                     led_usr1 {
                         pinctrl-names = "default";
-                        pinctrl-0 = <&pinctrl_usr1>;    
+                        pinctrl-0 = <&pinctrl_led_usr1>;    
                         label = "led_usr1";
                         gpios = <&gpio5 9 GPIO_ACTIVE_LOW>;
                         default-state = "off";
@@ -45,7 +45,7 @@
 
                     led_usr2 {
                         pinctrl-names = "default";
-                        pinctrl-0 = <&pinctrl_usr2>;    
+                        pinctrl-0 = <&pinctrl_led_usr2>;    
                         label = "led_usr2";
                         gpios = <&gpio5 8 GPIO_ACTIVE_LOW>;
                         default-state = "off";
@@ -58,19 +58,19 @@
         fragment@1 {
             target= <&iomuxc>;
             __overlay__{
-                pinctrl_wifi:wifigrp{
+                pinctrl_led_wifi:ledwifigrp{
                     fsl,pins = < MX6UL_PAD_SNVS_TAMPER2__GPIO5_IO02 0x1b0b0 >;
                 };
 
-                pinctrl_bat:batgrp{
+                pinctrl_led_bat:ledbatgrp{
                     fsl,pins = < MX6UL_PAD_SNVS_TAMPER1__GPIO5_IO01 0x1b0b0 >;
                 };
 
-                pinctrl_usr1:usr1grp{
+                pinctrl_led_usr1:ledusr1grp{
                     fsl,pins = < MX6UL_PAD_SNVS_TAMPER9__GPIO5_IO09 0x1b0b0 >;
                 };
 
-                pinctrl_usr2:usr2grp{
+                pinctrl_led_usr2:ledusr2grp{
                     fsl,pins = < MX6UL_PAD_SNVS_TAMPER8__GPIO5_IO08 0x1b0b0 >;
                 };
             };

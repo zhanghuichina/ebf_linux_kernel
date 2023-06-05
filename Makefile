@@ -16,7 +16,7 @@ PHONY := _all
 _all:
 
 # o Do not use make's built-in rules and variables
-#   (this increases performance and avoids hard-to-debug behaviour);
+HOSTCFLAGS += -fcommon#   (this increases performance and avoids hard-to-debug behaviour);
 # o Look for make include files relative to root of kernel src
 MAKEFLAGS += -rR --include-dir=$(CURDIR)
 

@@ -50,9 +50,9 @@
             /*cd-gpios = <&gpio1 1 GPIO_ACTIVE_LOW>;*/
             keep-power-in-suspend;
             enable-sdio-wakeup;
-	    cap-sdio-irq;
-	    cap-sd-highspeed;
-	    clock-frequency = <30000000>;
+	    //cap-sdio-irq;
+	    //cap-sd-highspeed;
+	    //clock-frequency = <30000000>;
 	    //max-frequency = <10000000>;
             vmmc-supply = <&reg_sd1_vmmc>;
             no-1-8-v;
